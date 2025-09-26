@@ -6,6 +6,12 @@
     <title>belajar programing</title>
 </head>
 <body>
-    
+    <?php
+    $nilai = 7;
+    $namal = 'kiExaa';
+
+    echo "nama : $nama, nilainya $nilai";
+    ?>
+    <!-- Aturan -->
 </body>
 </html>
