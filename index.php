@@ -8,9 +8,13 @@
 <body>
     <?php
     $nilai = 7;
-    $namal = 'kiExaa';
+    $nama = 'kiExaa';
+    $alamat = 'jeulingke residen 2'
+    // $jeniskelamin = 'laki2'
 
-    echo "nama : $nama, nilainya $nilai";
+    echo "nama : $nama, nilainya $nilai, alamat $alamat";
+    // echo ""
+
     ?>
     <!-- Aturan -->
 </body>
