@@ -53,6 +53,7 @@
                                 <input name="email" type="email" class="form-control" id="exampleInputEmail1"
                                     aria-describedby="emailHelp">
                             </div>
+                            
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Jenis Kelamin</label>
                                 <br>
@@ -68,13 +69,50 @@
                                 </div>
                             </div>
                             <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Tanggal dan Gelombang Pendaftaran</label>
+                                <select class="form-control" name="gelombang" id="">
+                                    <option value="">-Pilih gelombang-</option>
+                                    <!-- <option value="IPA">IPA</option> -->
+                                   <?php 
+                                        //kode untuk looping datat jurusan
+                                        include_once('../koneksi.php');
+                                        $qry_gelombang = "SELECT * FROM gelombang";
+                                        $data_gelombang = mysqli_query($koneksi,$qry_gelombang);
+                                        foreach($data_gelombang as $item_gelombang){
+                                    ?>
+                                    <option value="<?=$item_gelombang['id']?>"><?=$item_gelombang['tgl_gel']?>  -  <?=$item_gelombang['gelombang']?></option>
+
+                                    <!-- <option value="<?=$item_pendaftaran['id']?>"><?=$item_pendaftaran['gelombang']?></option> -->
+                                    <?php
+                                        //penutup kode looping jurusan
+                                        }
+                                    ?>
+                                </select>
+                            </div> 
+                            <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Jurusan</label>
                                 <select class="form-control" name="jurusan" id="">
                                     <option value="">-Pilih Jurusan-</option>
-                                    <option value="IPA">IPA</option>
-                                    <option value="IPS">IPS</option>
-                                    <option value="Bahasa">Bahasa</option>
+                                    <!-- <option value="IPA">IPA</option> -->
+                                   <?php 
+                                        //kode untuk looping datat jurusan
+                                        include_once('../koneksi.php');
+                                        $qry_jur = "SELECT * FROM jurusan";
+                                        $data_jur = mysqli_query($koneksi,$qry_jur);
+                                        foreach($data_jur as $item_jur){
+                                    ?>
+                                    <option value="<?=$item_jur['id']?>"><?=$item_jur['kode']?> - <?=$item_jur['jurusan']?></option>
+                                    <?php
+                                        //penutup kode looping jurusan
+                                        }
+                                    ?>
                                 </select>
+
+                                <!-- <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Pendaftaran</label>
+                                <input name="alamat" type="text" class="form-control" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp">
+                            </div> -->
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Foto</label>
