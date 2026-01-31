@@ -76,18 +76,47 @@ $data = mysqli_fetch_array($edit);
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Jurusan</label>
-                                <select class="form-control" name="jurusan" id="">
-                                    <option value="">-Pilih Jurusan-</option>
-                                    <option <?php echo $data['jurusan']=='IPA' ? 'selected' : '' ?> value="IPA">IPA</option>
-                                    <option <?php echo $data['jurusan']=='IPS' ? 'selected' : '' ?> value="IPS">IPS</option>
-                                    <option <?php echo $data['jurusan']=='Bahasa' ? 'selected' : '' ?> value="Bahasa">Bahasa</option>
+                                <label for="exampleInputEmail1" class="form-label">Gelombang</label>
+                                <select class="form-control" name="gelombang" id="">
+                                    <option value="">-Pilih Gelombang-</option>
+                                    <?php 
+                                        //kode untuk looping datat jurusan
+                                        include_once('../koneksi.php');
+                                        $qry_gelombang = "SELECT * FROM gelombang";
+                                        $data_gelombang = mysqli_query($koneksi,$qry_gelombang);
+                                        foreach($data_gelombang as $item_gelombang){
+                                    ?>
+                                    <option <?php echo $data['gelombangs_id'] = $item_gelombang['id'] ? 'selected' : '' ?> value="<?=$item_gelombang['id']?>"><?=$item_gelombang['tgl_gel']?> - <?=$item_gelombang['gelombang']?></option>
+                                    <?php
+                                        //penutup kode looping jurusan
+                                        }
+                                    ?>
                                 </select>
                             </div>
                             <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Jurusan</label>
+                                <select class="form-control" name="jurusan" id="">
+                                    <option value="">-Pilih Jurusan-</option>
+                                    <?php 
+                                        //kode untuk looping datat jurusan
+                                        include_once('../koneksi.php');
+                                        $qry_jur = "SELECT * FROM jurusan";
+                                        $data_jur = mysqli_query($koneksi,$qry_jur);
+                                        foreach($data_jur as $item_jur){
+                                    ?>
+                                    <option <?php echo $data['jurusans_id'] == $item_jur['id'] ? 'selected' : '' ?> value="<?=$item_jur['id']?>"><?=$item_jur['kode']?> - <?=$item_jur['jurusan']?></option>
+                                    <?php
+                                        //penutup kode looping jurusan
+                                        }
+                                    ?>
+                                </select>
+                            </div>
+                            </div>
+                            <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Foto</label>
-                                <input name="foto" type="file" class="form-control" id="exampleInputEmail1"
+                                <input name="foto" type="file" accept="image/*" class="form-control" id="exampleInputEmail1"
                                     aria-describedby="emailHelp">
+                                    <div id="emailHelp" class= "form-text">Abaikan Jika Foto Tidak Di Ubah</div>
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
