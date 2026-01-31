@@ -7,6 +7,17 @@ if (!isset($_GET['id'])) {
 
 $idhapus = $_GET['id'];
 
+#2.1
+$qry = "SELECT * FROM biodata WHERE id='$idhapus'";
+$hapus_foto = mysqli_query(mysql: $koneksi,query: $qry);
+$data = mysqli_fetch_array(result: $hapus_foto);
+$nama_foto = $data['foto'];
+$lokasi_foto = "../fotosiswa/$nama_foto";
+
+if(file_exists(filename: $lokasi_foto)){
+    unlink(filename: $lokasi_foto);
+}
+
 $qry = "DELETE FROM biodata WHERE id='$idhapus'";
 $hapus = mysqli_query($koneksi, $qry);
 
